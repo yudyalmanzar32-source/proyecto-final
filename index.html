@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Alerta Temprana - Proyecto de ML y Analítica Educativa</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="nav-logo">
+            <i class="fa-solid fa-graduation-cap"></i> PREDICTIVE-EDU
+        </a>
+        <ul class="nav-links">
+            <li><a href="#crisp">Metodología CRISP-ML</a></li>
+            <li><a href="#metrics">Modelos y Métricas</a></li>
+            <li><a href="#alert-sat">Alertas SAT</a></li>
+            <li><a href="#profile">CV Yudelka</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-tag">Inteligencia Artificial y Educación</div>
+        <h1>Modelo Predictivo de Deserción Escolar<br>& Sistema de Alerta Temprana</h1>
+        <p>
+            Plataforma predictiva para la detección anticipada del riesgo de abandono escolar en centros educativos de República Dominicana. Implementa modelos de clasificación y regresión supervisada bajo la metodología CRISP-ML.
+        </p>
+        <div class="hero-cta">
+            <a href="#crisp" class="btn btn-primary">
+                <i class="fa-solid fa-circle-info"></i> Explorar Proyecto
+            </a>
+            <a href="https://github.com" target="_blank" class="btn btn-secondary">
+                <i class="fa-brands fa-github"></i> Ver en GitHub
+            </a>
+        </div>
+    </header>
+
+    <!-- Metodología CRISP-ML Interactiva -->
+    <section id="crisp">
+        <h2 class="section-title">Ciclo de Vida del Proyecto (CRISP-ML)</h2>
+        <div class="crisp-container">
+            <!-- Tabs de navegación lateral -->
+            <div class="crisp-tabs">
+                <button class="crisp-tab-btn active" onclick="showTab(1)">
+                    <div class="number">1</div>
+                    <div>
+                        <h3>Comprensión del Negocio</h3>
+                        <small>Definición del reto y objetivos</small>
+                    </div>
+                </button>
+                <button class="crisp-tab-btn" onclick="showTab(2)">
+                    <div class="number">2</div>
+                    <div>
+                        <h3>Comprensión de los Datos</h3>
+                        <small>Exploración y EDA preliminar</small>
+                    </div>
+                </button>
+                <button class="crisp-tab-btn" onclick="showTab(3)">
+                    <div class="number">3</div>
+                    <div>
+                        <h3>Preparación de Datos</h3>
+                        <small>Limpieza, normalización y SMOTE</small>
+                    </div>
+                </button>
+                <button class="crisp-tab-btn" onclick="showTab(4)">
+                    <div class="number">4</div>
+                    <div>
+                        <h3>Modelado</h3>
+                        <small>Regresiones y Random Forest</small>
+                    </div>
+                </button>
+                <button class="crisp-tab-btn" onclick="showTab(5)">
+                    <div class="number">5</div>
+                    <div>
+                        <h3>Evaluación</h3>
+                        <small>Métricas de clasificación y regresión</small>
+                    </div>
+                </button>
+                <button class="crisp-tab-btn" onclick="showTab(6)">
+                    <div class="number">6</div>
+                    <div>
+                        <h3>Despliegue y Ética</h3>
+                        <small>Streamlit, alertas y sesgos</small>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Pantalla de visualización del contenido -->
+            <div class="crisp-content-display">
+                <!-- Pane 1 -->
+                <div class="crisp-content-pane active" id="pane-1">
+                    <h3>1. Comprensión del Negocio (Business Understanding)</h3>
+                    <p>
+                        La deserción escolar en el nivel secundario en República Dominicana supera el 20%. Esto tiene un alto impacto social y socioeconómico. El reto consiste en cambiar un enfoque reactivo (actuar cuando el alumno ya desertó) por un enfoque predictivo de prevención activa.
+                    </p>
+                    <ul>
+                        <li><strong>Objetivo:</strong> Identificar estudiantes en riesgo alto y medio de deserción antes del término del ciclo lectivo.</li>
+                        <li><strong>Algoritmos propuestos:</strong> Regresión Logística (baseline clasificadora), Random Forest (clasificador final) y Regresión Lineal (para estimar calificaciones).</li>
+                        <li><strong>Usuarios clave:</strong> Directores escolares, psicólogos, docentes y orientadores.</li>
+                    </ul>
+                </div>
+                <!-- Pane 2 -->
+                <div class="crisp-content-pane" id="pane-2">
+                    <h3>2. Comprensión de los Datos (Data Understanding)</h3>
+                    <p>
+                        Se recopiló y analizó una muestra de 4,500 registros con 18 variables predictoras asociadas a las esferas académica, familiar, demográfica y socioeconómica.
+                    </p>
+                    <ul>
+                        <li><strong>Variables académicas:</strong> Promedio de calificaciones, tasa de asistencia, materias reprobadas previas.</li>
+                        <li><strong>Variables conductuales:</strong> Incidencias disciplinarias, cambios de escuela.</li>
+                        <li><strong>Variables socioeconómicas:</strong> Nivel socioeconómico, distancia a la escuela, trabajo estudiantil, beca.</li>
+                        <li><strong>EDA:</strong> Se encontró una fuerte correlación negativa de la asistencia (-0.68) y el promedio (-0.62) con la deserción escolar.</li>
+                    </ul>
+                </div>
+                <!-- Pane 3 -->
+                <div class="crisp-content-pane" id="pane-3">
+                    <h3>3. Preparación de los Datos (Data Preparation)</h3>
+                    <p>
+                        Fase crítica para asegurar la calidad de las predicciones del modelo y prevenir el <em>data leakage</em>.
+                    </p>
+                    <ul>
+                        <li><strong>Limpieza:</strong> Eliminación de 27 duplicados, capping de asistencia a un máximo del 100% e imputación de nulos (moda para educación del padre, mediana para distancia a la escuela).</li>
+                        <li><strong>Normalización:</strong> Escalamiento Min-Max [0, 1] de variables continuas para Regresión Logística y Lineal.</li>
+                        <li><strong>Balanceo de Clases:</strong> Sobremuestreo sintético (SMOTE) en entrenamiento para la clase minoritaria (deserción = 1), logrando una proporción balanceada 60/40.</li>
+                    </ul>
+                </div>
+                <!-- Pane 4 -->
+                <div class="crisp-content-pane" id="pane-4">
+                    <h3>4. Modelado (Modeling)</h3>
+                    <p>
+                        Se entrenaron modelos paralelos correspondientes a las dos tareas principales del aprendizaje supervisado:
+                    </p>
+                    <ul>
+                        <li><strong>Clasificación (Dropout):</strong> Regresión Logística como modelo base y Random Forest (200 estimadores) como modelo de ensamble para maximizar robustez.</li>
+                        <li><strong>Regresión (Calificaciones):</strong> Regresión Lineal para estimar la nota final del estudiante basándose en su perfil y contexto familiar/social.</li>
+                        <li><strong>Ajuste de Hiperparámetros:</strong> Aplicación de Grid Search con validación cruzada estratificada de 5 pliegues (5-fold CV).</li>
+                    </ul>
+                </div>
+                <!-- Pane 5 -->
+                <div class="crisp-content-pane" id="pane-5">
+                    <h3>5. Evaluación (Evaluation)</h3>
+                    <p>
+                        Evaluación integral de modelos con el conjunto de prueba (test set de 15%), el cual no se utilizó en fases anteriores.
+                    </p>
+                    <ul>
+                        <li><strong>Random Forest:</strong> Alcanzó un rendimiento óptimo de AUC-ROC de <strong>0.921</strong> y un Recall del <strong>88.1%</strong> para la detección de desertores.</li>
+                        <li><strong>Regresión Logística:</strong> AUC-ROC de 0.831 y Recall de 72.4%.</li>
+                        <li><strong>Regresión Lineal:</strong> Evaluado con MSE, RMSE y coeficiente de determinación (R²) para asegurar un ajuste representativo en la predicción de calificaciones.</li>
+                    </ul>
+                </div>
+                <!-- Pane 6 -->
+                <div class="crisp-content-pane" id="pane-6">
+                    <h3>6. Despliegue y Consideraciones Éticas</h3>
+                    <p>
+                        Se diseñó una arquitectura de software interactiva mediante Streamlit para el despliegue del modelo.
+                    </p>
+                    <ul>
+                        <li><strong>Sesgos identificados:</strong> La tasa de falsos positivos en zonas rurales es superior (8.1% vs 4.2% urbana). Se mitiga requiriendo obligatoriamente supervisión humana.</li>
+                        <li><strong>Profecía Autocumplida:</strong> Clasificar a un estudiante en alto riesgo no debe estigmatizarlo ni generar bajas expectativas, sino activar canales de apoyo socioemocional.</li>
+                        <li><strong>Seguridad:</strong> Datos sensibles encriptados y sujetos a consentimiento parental.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Modelos y Métricas -->
+    <section id="metrics" style="background-color: white; max-width: 100%; width: 100%; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="section-title">Modelos y Métricas de Rendimiento</h2>
+            <div class="metrics-grid">
+                <!-- Modelo 1 -->
+                <div class="metric-card">
+                    <h3>Regresión Logística (Base)</h3>
+                    <div class="metric-row">
+                        <span>Accuracy (Exactitud)</span>
+                        <span class="metric-val">78.3%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Recall (Sensibilidad)</span>
+                        <span class="metric-val">72.4%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>F1-Score</span>
+                        <span class="metric-val">66.3%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>AUC-ROC</span>
+                        <span class="metric-val">0.831</span>
+                    </div>
+                </div>
+
+                <!-- Modelo 2 -->
+                <div class="metric-card" style="border-color: var(--color-accent); box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15);">
+                    <h3>Random Forest (Seleccionado)</h3>
+                    <div class="metric-row">
+                        <span>Accuracy (Exactitud)</span>
+                        <span class="metric-val" style="color: var(--color-accent);">87.4%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Recall (Sensibilidad)</span>
+                        <span class="metric-val" style="color: var(--color-accent);">88.1%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>F1-Score</span>
+                        <span class="metric-val" style="color: var(--color-accent);">82.9%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>AUC-ROC</span>
+                        <span class="metric-val" style="color: var(--color-accent);">0.921</span>
+                    </div>
+                </div>
+
+                <!-- Modelo 3 -->
+                <div class="metric-card">
+                    <h3>Regresión Lineal (Notas)</h3>
+                    <div class="metric-row">
+                        <span>Promedio real promedio</span>
+                        <span class="metric-val">68.4 pts</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>RMSE (Error cuadrático)</span>
+                        <span class="metric-val">5.82 pts</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>R² (Explicación Varianza)</span>
+                        <span class="metric-val">0.781</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Variables predictoras</span>
+                        <span class="metric-val">16 vars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sistema de Alertas con Visualización Realidad Aumentada -->
+    <section id="alert-sat">
+        <h2 class="section-title">Sistema de Alerta Temprana (SAT)</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 3rem auto; color: #64748B;">
+            Protocolos operativos accionables diseñados a partir de las probabilidades de deserción escolar estimadas en tiempo real.
+        </p>
+
+        <!-- Preview del SAT e imagen generada -->
+        <div class="sat-preview">
+            <div class="sat-grid">
+                <div>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem; background: linear-gradient(90deg, #FFFFFF, #93C5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Visualización Predictiva e Intervenciones
+                    </h3>
+                    <div class="sat-levels">
+                        <div class="sat-level-card">
+                            <div class="level-indicator ind-green"></div>
+                            <div>
+                                <h4>🟢 RIESGO BAJO (Probabilidad < 30%)</h4>
+                                <p><strong>Acción:</strong> Seguimiento preventivo trimestral y refuerzo positivo en tutoría.</p>
+                                <p><small>Responsable: Docente tutor del grado.</small></p>
+                            </div>
+                        </div>
+                        <div class="sat-level-card">
+                            <div class="level-indicator ind-yellow"></div>
+                            <div>
+                                <h4>🟡 RIESGO MEDIO (Probabilidad 30% - 60%)</h4>
+                                <p><strong>Acción:</strong> Convocatoria familiar, diseño de plan de apoyo y tutoría académica.</p>
+                                <p><small>Responsable: Departamento de Orientación Escolar.</small></p>
+                            </div>
+                        </div>
+                        <div class="sat-level-card">
+                            <div class="level-indicator ind-red"></div>
+                            <div>
+                                <h4>🔴 RIESGO ALTO (Probabilidad > 60%)</h4>
+                                <p><strong>Acción:</strong> Intervención de emergencia, visitas domiciliarias y plan psicopedagógico individual.</p>
+                                <p><small>Responsable: Dirección del centro y Psicólogo Escolar.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imagen IA de Realidad Aumentada -->
+                <div style="text-align: center;">
+                    <img src="assets/early_warning_system.png" alt="Concepto de Sistema de Alerta Temprana en Realidad Aumentada" style="max-width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem;">
+                    <span style="font-size: 0.8rem; color: #64748B; font-style: italic;">
+                        Imagen conceptual generada por IA: Monitoreo predictivo y escudo protector en el aula digital.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV y Portafolio de la Autora -->
+    <section id="profile" style="background-color: white; max-width: 100%; width: 100%; border-top: 1px solid #E2E8F0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="section-title">Curriculum Vitae y Portafolio</h2>
+            
+            <div class="profile-grid">
+                <!-- Tarjeta Lateral del Perfil -->
+                <div class="profile-card">
+                    <div class="avatar-placeholder">YM</div>
+                    <h3>Yudelka Morel</h3>
+                    <p class="tag">Especialista en IA Educativa y Machine Learning</p>
+                    <p style="font-size: 0.9rem; color: #64748B; text-align: justify; margin-bottom: 1.5rem;">
+                        Docente e investigadora dominicana dedicada al análisis de datos y modelado predictivo aplicado al mejoramiento de los procesos escolares y la retención estudiantil.
+                    </p>
+                    <div class="profile-stats">
+                        <div>
+                            <div class="profile-stat-val">3+</div>
+                            <div class="profile-stat-lbl">Proyectos ML</div>
+                        </div>
+                        <div>
+                            <div class="profile-stat-val">Maestría</div>
+                            <div class="profile-stat-lbl">IA Educativa</div>
+                        </div>
+                        <div>
+                            <div class="profile-stat-val">INTEC</div>
+                            <div class="profile-stat-lbl">Graduada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles del CV -->
+                <div class="cv-details">
+                    <div class="cv-block">
+                        <h3>Perfil Profesional</h3>
+                        <p style="text-align: justify; color: #475569;">
+                            Ingeniera de software y educadora con especialización en Inteligencia Artificial Aplicada a la Educación. Experiencia en minería de datos educativos (Educational Data Mining), desarrollo de interfaces predictivas inteligentes con Streamlit y diseño de metodologías de aprendizaje automático éticas y responsables.
+                        </p>
+                    </div>
+
+                    <div class="cv-block">
+                        <h3>Educación y Certificaciones</h3>
+                        <div class="cv-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <span class="timeline-title">Maestría en IA Aplicada a la Educación e Investigación</span>
+                                    <span class="timeline-date">2024 - 2026</span>
+                                </div>
+                                <div class="timeline-subtitle">Universidad Federico Henríquez y Carvajal (UFHEC)</div>
+                                <p style="font-size: 0.9rem; color: #64748B;">Enfoque en desarrollo de pipelines de Machine Learning para optimización escolar y tutorías automatizadas inteligentes.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <span class="timeline-title">Ingeniería en Tecnologías de la Información</span>
+                                    <span class="timeline-date">Graduada</span>
+                                </div>
+                                <div class="timeline-subtitle">Instituto Tecnológico de Santo Domingo (INTEC)</div>
+                                <p style="font-size: 0.9rem; color: #64748B;">Enfoque en bases de datos analíticas, programación modular en Python y estructuración de software.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cv-block">
+                        <h3>Habilidades Técnicas</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Python (Pandas, Numpy)</span>
+                            <span class="skill-tag">Scikit-Learn (ML)</span>
+                            <span class="skill-tag">Metodología CRISP-ML</span>
+                            <span class="skill-tag">Balanceo de Datos (SMOTE)</span>
+                            <span class="skill-tag">Streamlit Web Apps</span>
+                            <span class="skill-tag">Git & GitHub</span>
+                            <span class="skill-tag">Realidad Aumentada (RA) Conceptos</span>
+                            <span class="skill-tag">Ética en IA Educativa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Yudelka Morel. Todos los derechos reservados.</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.7;">
+            Diseñado en el marco de la Maestría en IA aplicada a la Educación | <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> Repositorio del Proyecto</a>
+        </p>
+    </footer>
+
+    <!-- Scripts de Interacción -->
+    <script>
+        // Función para cambiar de pestañas en CRISP-ML
+        function showTab(tabIndex) {
+            // Desactivar todos los botones
+            const buttons = document.querySelectorAll('.crisp-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Ocultar todos los páneles
+            const panes = document.querySelectorAll('.crisp-content-pane');
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            // Activar botón seleccionado
+            buttons[tabIndex - 1].classList.add('active');
+
+            // Mostrar pánel seleccionado
+            const activePane = document.getElementById(`pane-${tabIndex}`);
+            activePane.classList.add('active');
+        }
+    </script>
+</body>
+</html>
